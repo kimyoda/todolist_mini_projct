@@ -20,10 +20,24 @@ const InsertItem = ({ items, setItems }: Props) => {
     console.log(itemName);
   };
 
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      clickButton();
+    }
+  };
+
   return (
     <>
-      <input type="text" value={itemName} onChange={changeItemName} />
-      <button onClick={clickButton}>{"생성"}</button>
+      <input
+        className="task-input"
+        type="text"
+        value={itemName}
+        onChange={changeItemName}
+        onKeyDown={handleKeyPress}
+      />
+      <button className="button-add" onClick={clickButton}>
+        {"생성"}
+      </button>
     </>
   );
 };
